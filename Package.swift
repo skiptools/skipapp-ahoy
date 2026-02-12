@@ -1,5 +1,5 @@
 // swift-tools-version: 6.1
-// This is a Skip (https://skip.tools) package.
+// This is a Skip (https://skip.dev) package.
 import PackageDescription
 
 let package = Package(
@@ -11,7 +11,7 @@ let package = Package(
         .library(name: "SkipperModel", type: .dynamic, targets: ["SkipperModel"]),
     ],
     dependencies: [
-        .package(url: "https://source.skip.tools/skip.git", from: "1.0.0"),
+        .package(url: "https://source.skip.tools/skip.git", from: "1.7.2"),
         .package(url: "https://source.skip.tools/skip-fuse-ui.git", from: "1.0.0"),
         .package(url: "https://source.skip.tools/skip-fuse.git", from: "1.0.0"),
         .package(url: "https://source.skip.tools/skip-model.git", from: "1.0.0")

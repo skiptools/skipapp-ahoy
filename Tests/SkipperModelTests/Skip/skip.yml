@@ -1,3 +1,7 @@
-# # Skip configuration for SkipperModel module
+# Skip configuration for SkipperModelTests module
+
 #build:
 #  contents:
+
+skip:
+  mode: 'transpiled'

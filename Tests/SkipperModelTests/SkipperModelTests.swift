@@ -1,21 +1,10 @@
 import Testing
-import OSLog
 import Foundation
-import SkipBridge
 @testable import SkipperModel
 
-let logger: Logger = Logger(subsystem: "SkipperModel", category: "Tests")
-
 @Suite struct SkipperModelTests {
-    init() {
-        #if SKIP
-        // needed to load the compiled bridge when the tests are transpiled
-        loadPeerLibrary(packageName: "skipapp-ahoy", moduleName: "SkipperModel")
-        #endif
-    }
 
     @Test func skipperModel() throws {
-        logger.log("running testSkipperModel")
         #expect(1 + 2 == 3, "basic test")
     }
 

@@ -30,7 +30,19 @@ jobs:
         run: |
           ./skipapp-ahoy-repo/scripts/diff_template.sh skipapp-ahoy skipapp-ahoy-repo
   call-workflow:
-    uses: skiptools/actions/.github/workflows/skip-app.yml@v1
+    # TESTING ONLY — restore to @v1 once https://github.com/skiptools/actions/pull/20 is merged and released
+    uses: skiptools/actions/.github/workflows/skip-app.yml@swiftbuild-native
     with:
       run-local-tests: false
+      # release (Xcode 26 / Swift 6.3, `native`) and preview (Xcode 27 beta / Swift 6.4,
+      # `swiftbuild`) toolchains in parallel
+      swift-toolchains: dual
+      # The preview variant needs GitHub's `xcode-27` image: the standard macos-26 image
+      # ships Xcode 26.x only. Switch to `xcode-27-xlarge` if the preview image queues,
+      # since its capacity is still limited.
+      preview-runs-on: xcode-27
+      # TESTING ONLY — build skip from the skipstone PR branch rather than the released
+      # formula/cask, since dual mode needs the --build-system support that branch adds.
+      # Remove once skipstone#swiftbuild-native ships in a release.
+      skip-source: swiftbuild-native
 
